@@ -55,8 +55,8 @@ class SignUpActivity : AppCompatActivity() {
                     if (it.isSuccessful) {
                         Toast.makeText(this, "User Created Successfully", Toast.LENGTH_SHORT).show()
 
-                        var gotologin = Intent(this, MainActivity::class.java)
-                        startActivity(gotologin)
+                        var gotointerests = Intent(this, InterestsActivity::class.java)
+                        startActivity(gotointerests)
                     } else {
                         Toast.makeText(this, "Failed to Create Account", Toast.LENGTH_SHORT).show()
                     }
