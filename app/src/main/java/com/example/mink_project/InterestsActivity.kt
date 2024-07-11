@@ -2,6 +2,7 @@ package com.example.mink_project
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.Chip
@@ -24,6 +25,7 @@ class InterestsActivity : AppCompatActivity() {
         val saveButton: Button = findViewById(R.id.saveButton)
 
         saveButton.setOnClickListener {
+            Log.d("InterestsActivity", "Save button clicked")
             val selectedOptions = mutableListOf<String>()
 
             for (i in 0 until chipGroup.childCount) {
@@ -37,13 +39,14 @@ class InterestsActivity : AppCompatActivity() {
             if (currentUser != null) {
                 saveSelectedOptionsToFirestore(currentUser.uid, selectedOptions)
             } else {
+                Log.e("InterestsActivity", "User not authenticated")
                 // Handle the case when the user is not authenticated
             }
         }
-
     }
 
     private fun saveSelectedOptionsToFirestore(userId: String, selectedOptions: List<String>) {
+        Log.d("InterestsActivity", "Saving selected options to Firestore: $selectedOptions")
         val userPreferences = hashMapOf(
             "preferences" to selectedOptions
         )
@@ -52,13 +55,14 @@ class InterestsActivity : AppCompatActivity() {
             .document(userId)
             .set(userPreferences)
             .addOnSuccessListener {
-                var gotomain = Intent(this, MainActivity::class.java)
-                startActivity(gotomain)
+                Log.d("InterestsActivity", "Preferences saved successfully")
+                val gotoMain = Intent(this, MainActivity::class.java)
+                startActivity(gotoMain)
                 finish()
             }
-            .addOnFailureListener {
+            .addOnFailureListener { e ->
+                Log.e("InterestsActivity", "Error saving preferences", e)
                 // Handle failure
             }
     }
-
 }
