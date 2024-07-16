@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.firebase.storage)
     implementation(libs.picasso)
     implementation(libs.viewpager2)
+    implementation(libs.firebase.database)
 
     // Testing dependencies
     testImplementation(libs.junit)

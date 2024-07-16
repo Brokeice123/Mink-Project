@@ -31,22 +31,6 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="16dp"/>
 
-            <ImageView
-                android:id="@+id/backgroundImage"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/ic_launcher_background"
-                android:contentDescription="Background Image" />
-
-            <Button
-                android:id="@+id/selectBackgroundImageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select Background Image"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp"/>
 
             <EditText
                 android:id="@+id/fullName"

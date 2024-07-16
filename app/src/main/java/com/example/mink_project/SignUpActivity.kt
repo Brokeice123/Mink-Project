@@ -9,8 +9,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.mink_project.model.User
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class SignUpActivity : AppCompatActivity() {
     lateinit var m_edt_name: EditText
@@ -20,6 +23,7 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var m_btn_create: Button
 
     lateinit var auth: FirebaseAuth
+    lateinit var DbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +57,7 @@ class SignUpActivity : AppCompatActivity() {
             } else {
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) {
                     if (it.isSuccessful) {
+                        addUserToDatabase(name,email,auth.currentUser?.uid!!)
                         Toast.makeText(this, "User Created Successfully", Toast.LENGTH_SHORT).show()
 
                         var gotointerests = Intent(this, InterestsActivity::class.java)
@@ -65,5 +70,11 @@ class SignUpActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    private fun addUserToDatabase(name: String, email: String, uid: String){
+        DbRef = FirebaseDatabase.getInstance().getReference()
+
+        DbRef.child("user").child(uid).setValue(User(name, email, uid))
     }
 }

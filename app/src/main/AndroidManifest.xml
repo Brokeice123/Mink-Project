@@ -13,10 +13,7 @@
         android:theme="@style/Theme.MinkProject"
         tools:targetApi="31">
         <activity
-            android:name=".LikedUsers"
-            android:exported="false" />
-        <activity
-            android:name=".LikedUsersActivities"
+            android:name=".ChatActivity"
             android:exported="false" />
         <activity
             android:name=".InterestsActivity"

@@ -23,7 +23,6 @@ class InterestsActivity : AppCompatActivity() {
     private lateinit var storage: FirebaseStorage
 
     private lateinit var profileImage: ImageView
-    private lateinit var backgroundImage: ImageView
     private lateinit var firstName: EditText
     private lateinit var phoneNumber: EditText
     private lateinit var email: EditText
@@ -32,10 +31,8 @@ class InterestsActivity : AppCompatActivity() {
     private lateinit var chipGroup: ChipGroup
     private lateinit var saveButton: Button
     private lateinit var selectProfileImageButton: Button
-    private lateinit var selectBackgroundImageButton: Button
 
     private var profileImageUri: Uri? = null
-    private var backgroundImageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +43,6 @@ class InterestsActivity : AppCompatActivity() {
         storage = FirebaseStorage.getInstance()
 
         profileImage = findViewById(R.id.profileImage)
-        backgroundImage = findViewById(R.id.backgroundImage)
         firstName = findViewById(R.id.fullName)
         phoneNumber = findViewById(R.id.phoneNumber)
         email = findViewById(R.id.email)
@@ -55,14 +51,9 @@ class InterestsActivity : AppCompatActivity() {
         chipGroup = findViewById(R.id.chipGroup)
         saveButton = findViewById(R.id.saveButton)
         selectProfileImageButton = findViewById(R.id.selectProfileImageButton)
-        selectBackgroundImageButton = findViewById(R.id.selectBackgroundImageButton)
 
         selectProfileImageButton.setOnClickListener {
             selectImage(PROFILE_IMAGE_REQUEST_CODE)
-        }
-
-        selectBackgroundImageButton.setOnClickListener {
-            selectImage(BACKGROUND_IMAGE_REQUEST_CODE)
         }
 
         saveButton.setOnClickListener {
@@ -83,10 +74,6 @@ class InterestsActivity : AppCompatActivity() {
                     profileImageUri = data.data
                     profileImage.setImageURI(profileImageUri)
                 }
-                BACKGROUND_IMAGE_REQUEST_CODE -> {
-                    backgroundImageUri = data.data
-                    backgroundImage.setImageURI(backgroundImageUri)
-                }
             }
         }
     }
@@ -105,7 +92,6 @@ class InterestsActivity : AppCompatActivity() {
         if (currentUser != null) {
             val userId = currentUser.uid
             uploadImageToStorage(userId, profileImageUri, "profileImage")
-            uploadImageToStorage(userId, backgroundImageUri, "backgroundImage")
             saveUserInfoToFirestore(userId, selectedOptions)
         } else {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
@@ -164,6 +150,5 @@ class InterestsActivity : AppCompatActivity() {
 
     companion object {
         private const val PROFILE_IMAGE_REQUEST_CODE = 1
-        private const val BACKGROUND_IMAGE_REQUEST_CODE = 2
     }
 }
