@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +22,8 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var m_edt_email: EditText
     lateinit var m_edt_phone: EditText
     lateinit var m_edt_password: EditText
-    lateinit var m_btn_create: Button
+    lateinit var m_btn_create: TextView
+    private lateinit var btn_back: ImageView
 
     lateinit var auth: FirebaseAuth
     lateinit var DbRef: DatabaseReference
@@ -42,6 +45,7 @@ class SignUpActivity : AppCompatActivity() {
         m_edt_phone = findViewById(R.id.edtRegphone)
         m_edt_password = findViewById(R.id.edtRegpassword)
         m_btn_create = findViewById(R.id.btnRegcreate)
+        btn_back = findViewById(R.id.btn_back_signup)
 
         auth = FirebaseAuth.getInstance()
         //Create Account
@@ -69,6 +73,11 @@ class SignUpActivity : AppCompatActivity() {
 
             }
 
+        }
+
+        btn_back.setOnClickListener {
+            val intent = Intent(this, WelcomePageActivity::class.java)
+            startActivity(intent)
         }
     }
 
