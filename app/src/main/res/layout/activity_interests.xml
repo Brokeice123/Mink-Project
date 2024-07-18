@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:background="@color/white">
 
     <ScrollView
@@ -20,23 +21,15 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="16dp"
-                android:src="@drawable/ic_launcher_foreground"
+                android:src="@drawable/interests"
                 android:contentDescription="Profile Image" />
-
-            <Button
-                android:id="@+id/selectProfileImageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select Profile Image"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp"/>
-
 
             <EditText
                 android:id="@+id/fullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Full Name"
+                android:textColor="@color/black"
                 android:layout_marginBottom="8dp" />
 
             <EditText
@@ -44,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone Number"
+                android:textColor="@color/black"
                 android:layout_marginBottom="8dp" />
 
             <EditText
@@ -52,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:layout_marginBottom="8dp"
+                android:textColor="@color/black"
                 android:inputType="textEmailAddress" />
 
             <EditText
@@ -59,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="City"
+                android:textColor="@color/black"
                 android:layout_marginBottom="8dp" />
 
             <EditText
@@ -66,6 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Personal Description"
+                android:textColor="@color/black"
                 android:layout_marginBottom="16dp" />
 
             <TextView
@@ -75,6 +72,7 @@
                 android:text="Select your interests"
                 android:textSize="18sp"
                 android:layout_gravity="center"
+                android:textColor="@color/black"
                 android:layout_marginBottom="16dp"/>
 
             <com.google.android.material.chip.ChipGroup
@@ -89,37 +87,155 @@
                     android:id="@+id/chip1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     app:chipBackgroundColor="@drawable/chip_selector"
-                    android:text="Kenyan Internships"/>
+                    android:text="Sports"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     app:chipBackgroundColor="@drawable/chip_selector"
-                    android:text="Remote Jobs in Africa"/>
+                    android:text="Music"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     app:chipBackgroundColor="@drawable/chip_selector"
-                    android:text="Online Writing"/>
+                    android:text="Arts and Crafts"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Reading"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Cooking and Baking"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Travel"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Gaming"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Fitness"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Photography"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Dancing"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Writing"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Technology"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Volunteering"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Fashion"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@drawable/chip_selector"
+                    android:text="Pets"/>
+
 
                 <!-- Add more chips as needed -->
 
             </com.google.android.material.chip.ChipGroup>
 
-            <Button
+            <TextView
                 android:id="@+id/saveButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
                 android:text="Save"
+                android:background="@drawable/interests_btn"
                 android:layout_gravity="center"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

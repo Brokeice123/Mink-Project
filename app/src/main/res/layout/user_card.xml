@@ -6,11 +6,26 @@
 
     android:elevation="4dp">
 
+    <ImageView
+        android:id="@+id/image_initials"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/circle_background"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
     <TextView
         android:id="@+id/txt_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Keith"
+        android:textColor="@color/black"
+        android:layout_marginLeft="80dp"
+        android:layout_centerVertical="true"
         android:textSize="30sp"
         android:textStyle="bold"/>
 

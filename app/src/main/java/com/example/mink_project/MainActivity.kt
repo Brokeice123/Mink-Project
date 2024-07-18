@@ -21,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
     private lateinit var userRecyclerView: RecyclerView

@@ -8,8 +8,12 @@ import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.firebase.auth.FirebaseAuth
@@ -22,27 +26,29 @@ class InterestsActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var storage: FirebaseStorage
 
-    private lateinit var profileImage: ImageView
     private lateinit var firstName: EditText
     private lateinit var phoneNumber: EditText
     private lateinit var email: EditText
     private lateinit var city: EditText
     private lateinit var personalDescription: EditText
     private lateinit var chipGroup: ChipGroup
-    private lateinit var saveButton: Button
-    private lateinit var selectProfileImageButton: Button
+    private lateinit var saveButton: TextView
 
-    private var profileImageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_interests)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         firestore = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
 
-        profileImage = findViewById(R.id.profileImage)
         firstName = findViewById(R.id.fullName)
         phoneNumber = findViewById(R.id.phoneNumber)
         email = findViewById(R.id.email)
@@ -50,31 +56,9 @@ class InterestsActivity : AppCompatActivity() {
         personalDescription = findViewById(R.id.personalDescription)
         chipGroup = findViewById(R.id.chipGroup)
         saveButton = findViewById(R.id.saveButton)
-        selectProfileImageButton = findViewById(R.id.selectProfileImageButton)
-
-        selectProfileImageButton.setOnClickListener {
-            selectImage(PROFILE_IMAGE_REQUEST_CODE)
-        }
 
         saveButton.setOnClickListener {
             saveProfile()
-        }
-    }
-
-    private fun selectImage(requestCode: Int) {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, requestCode)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && data != null) {
-            when (requestCode) {
-                PROFILE_IMAGE_REQUEST_CODE -> {
-                    profileImageUri = data.data
-                    profileImage.setImageURI(profileImageUri)
-                }
-            }
         }
     }
 
@@ -91,7 +75,6 @@ class InterestsActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         if (currentUser != null) {
             val userId = currentUser.uid
-            uploadImageToStorage(userId, profileImageUri, "profileImage")
             saveUserInfoToFirestore(userId, selectedOptions)
         } else {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
@@ -148,7 +131,4 @@ class InterestsActivity : AppCompatActivity() {
             }
     }
 
-    companion object {
-        private const val PROFILE_IMAGE_REQUEST_CODE = 1
-    }
 }
